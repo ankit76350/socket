@@ -88,16 +88,22 @@ io.on('connection', (socket) => {
   console.log('a user connected');
 });
 ```
-- Listens for a new WebSocket connection.
-- When a client connects, it logs "a user connected".
+- The `io.on('connection', callback)` function listens for a new WebSocket connection.
+- When a client connects using WebSockets, a unique socket instance (`socket`) is created for that client.
+- The server logs the message "a user connected" whenever a new client establishes a connection.
+- This event fires every time a new user connects to the server using WebSockets.
+- The `socket` object allows two-way communication between the server and the client.
+- Once connected, the server can send messages to the client and vice versa.
+- If multiple clients connect, each one will have its own `socket` instance.
 
 #### How It Works?
-1. A client connects using WebSocket.
-2. The server logs:
+1. A client establishes a WebSocket connection.
+2. The `connection` event is triggered on the server.
+3. The server logs:
    ```sh
    a user connected
    ```
-3. The connection remains active for real-time communication.
+4. The client is now connected and can exchange real-time messages with the server.
 
 ### Starting the Server
 ```javascript
